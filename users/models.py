@@ -1,43 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
+from django.contrib.auth.decorators import login_required
 
-class UserProfile(AbstractBaseUser):
-	SUCCESS = 1
-	USER_EXISTS = -1
-	INVALID_USERNAME = -2
-	INVALID_PASSWORD = -3
-	INVALID_EMAIL = -4
-	BAD_CREDENTIALS = -5
-	DISABLED_ACCOUNT = -6
-	MAX_USERNAME_LENGTH = 128
-	MAX_PASSWORD_LENGTH = 128
-	
-	username = models.CharField(max_length=MAX_USERNAME_LENGTH)
-	first_name = models.CharField(max_length=30, blank=True)
-    last_name = models.CharField(max_length=30, blank=True)
-    email = models.EmailField()
-	icon = models.ImageField(blank=True, null=True)
-	friends = models.ManyToManyField('self', blank=True, null=True)
-	
-	objects = UserProfileManager()
-	
-	def __unicode__(self):
-		return self.user.username
-		
 class UserProfileManager(BaseUserManager):
 
-	def create_user(self, username, password, email):
+	def create_user(self, username, email, password=None):
 		check = self.validate_user(username, password, email)
 		if(check == User.SUCCESS):
-			user, created = User.objects.get_or_create(username=username, password=password, email=email)
-			if not created:
-				return {'errCode': User.ERR_USER_EXISTS}
-			else:
-				user.save()
-				profile = UserProfile(user=user)
-				profile.save()
-				return {'errCode': User.SUCCESS}
-		return {'errCode': check}
+			user = self.model(username=username, email=email)
+			user.set_password(password)
+			user.save()
+			return user
 
 	def validate_user(self, username, password, email):
 		if username is None:
@@ -57,6 +30,31 @@ class UserProfileManager(BaseUserManager):
 			return {'errCode': User.INVALID_EMAIL}
 			
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
+
+
+class UserProfile(AbstractBaseUser):
+	SUCCESS = 1
+	USER_EXISTS = -1
+	INVALID_USERNAME = -2
+	INVALID_PASSWORD = -3
+	INVALID_EMAIL = -4
+	BAD_CREDENTIALS = -5
+	DISABLED_ACCOUNT = -6
+	MAX_USERNAME_LENGTH = 128
+	MAX_PASSWORD_LENGTH = 128
+	
+	username = models.CharField(max_length=MAX_USERNAME_LENGTH)
+	first_name = models.CharField(max_length=30, blank=True)
+	last_name = models.CharField(max_length=30, blank=True)
+	email = models.EmailField()
+	icon = models.ImageField(blank=True, null=True)
+	friends = models.ManyToManyField('self', blank=True, null=True)
+	
+	objects = UserProfileManager()
+	
+	def __unicode__(self):
+		return self.user.username
+		
 			
 class FriendRequest(models.Model):
 
@@ -79,7 +77,7 @@ class FriendRequest(models.Model):
 					user = UserProfile.objects.get(id=self.user)
 					friend = UserProfile.objects.get(id=self.friend)
 					return (user, friend)
-				catch UserProfile.DoesNotExist as e:
+				except UserProfile.DoesNotExist as e:
 					return (None, None)
 		return (None, None)
 		
