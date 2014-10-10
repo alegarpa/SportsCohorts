@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sports Cohorts</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href = "css/bootstrap.min.css" rel = "stylesheet">
+		<link href = "css/styles.css" rel = "stylesheet">
+		<link href = "css/slideshow.css" rel = "stylesheet">
+	</head>
+	<body>
+		<div class = "navbar navbar-custom navbar-static-top">
+			<div class = "container">			   
+				<a href = "#" class = "navbar-brand">Sports Cohorts</a>
+				<button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+					<span class = "icon-bar"></span>
+					<span class = "icon-bar"></span>
+					<span class = "icon-bar"></span>
+				</button>
+			<!--end .container--></div>
+		<!--end navbar--></div>
+
+		<!-- slideshow code-->
+		<ul class="cb-slideshow">
+	        <li><span><img src='images/soccer.jpg'></span><div><h3>sports</h3></div></li>
+	        <li><span><img src='images/football.jpg'></span><div><h3>more sports</h3></div></li>
+	        <li><span><img src='images/basketball.jpg'></span><div><h3>yay sports</h3></div></li>
+	        <li><span><img src='images/soccer.jpg'></span><div><h3>sports</h3></div></li>
+	        <li><span><img src='images/football.jpg'></span><div><h3>more sports</h3></div></li>
+	        <li><span><img src='images/basketball.jpg'></span><div><h3>yay sports</h3></div></li>
+	    </ul>
+	    <!-- end slideshow code-->
+
+
+		<!--had to put this outside of other navbar so it wouldn't inherit properties; otherwise modals did not work properly...will fix later-->
+		<div id="headerButtons">
+
+		<!-- Button triggered login modal -->
+		<button class="btn btn-login btn-sm" data-toggle="modal" data-target="#loginModal">
+		  Login
+		</button>
+		<!-- Modal -->
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Please enter your credentials below</h4>
+		      </div>
+		      <div class="modal-body">
+
+				<form method="POST" name="loginForm">
+					Username: <input id="username" type="text" name="username"><BR>
+					Password: <input id="password" type="password" name="password"><BR><BR>
+            		<input id="loginButton2" type="submit" value="Login">
+            	</form>
+
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Log in</button>
+		      </div>
+		    </div>
+		  </div>
+		<!--end log in modal--></div>
+
+		<!-- Button triggered add user modal -->
+		<button class="btn btn-adduser btn-sm" data-toggle="modal" data-target="#addUserModal">
+		  Sign Up
+		</button>
+		<!-- Modal -->
+		<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Please fill out all the fields below</h4>
+		      </div>
+		      <div class="modal-body">
+				<form method="POST" name="loginForm">
+            		First name: <input id="firstname" type="text" name="firstname"><br>
+            		Last name: <input id="lastname" type="text" name="lastname"><br>
+            		E-mail: <input id="email" type="text" name="email"><br>
+            		Username: <input id="username" type="text" name="username"><br>
+            		Password: <input id="password" type="password" name="password"><BR>
+            		Confirm password: <input id="confirmpassword" type="password" name="confirmpassword"><BR><BR>
+            		<input id="createAccountButton" type="submit" value="Create Account">
+            	</form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Sign me up</button>
+		      </div>
+		    </div>
+		  </div>
+		<!--end add user modal--></div>
+				<!--end headerButtons--></div>
+
+
+
+		<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src = "js/bootstrap.js"></script>
+		<script src = "js/slideshow.js"></script>
+	   
+	</body>
+</html>
