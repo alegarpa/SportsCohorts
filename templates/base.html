@@ -1,0 +1,103 @@
+<!-- Use this as template to get every page started; do NOT save any changes to this file-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}Sports Cohorts{% endblock %}</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- more custom CSS-->
+    <link href = "css/styles.css" rel = "stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body>
+
+<div class="header">
+    <a href="#" class="header-brand">Sports Cohorts</a>
+    <div class="header-userOptions">Logged in as {{ username }}   <a href="/user/logout">Logout</a></div>
+<!--end header--></div>
+
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Notifications</a>
+                </li>
+                <li>
+                    <a href="#">Sports</a>
+                </li>
+                <li>
+                    <a href="#">My Profile</a>
+                </li>
+                <li>
+                    <a href="#">My Games</a>
+                </li>
+                <li>
+                    <a href="#">My Friends</a>
+                </li>
+                <li>
+                    <a href="#">Players</a>
+                </li>
+            </ul>
+        </div><!-- /#sidebar-wrapper -->
+        <!-- End of Sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div id="toggleButton">
+                        <a href="#menu-toggle" class="btn btn-default btn-sm" id="menu-toggle"><span class="glyphicon glyphicon-th-list"></span></a>
+                    </div><!--end toggleButton-->
+
+                    <!-- block means this section of the page is named content; everything within the block can be substituted by other templates as long as they refer to content as a block within their template -->
+                     {% block content %}Content{% endblock %}
+                     
+                <!-- end row--></div>
+           <!-- end container-fluid--> </div>
+    <!-- end page-content-wrapper--></div>
+
+    <!-- end wrapper --></div>
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle and logout button Script -->
+    <script src="js/sidebar.js"></script>
+
+
+
+</body>
+
+</html>

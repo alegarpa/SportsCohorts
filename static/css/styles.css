@@ -1,0 +1,121 @@
+body {
+  background-color: #181818;
+}
+
+ul {
+    list-style-type: none;
+    }
+
+#errorMessage {
+  color: red;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.row {
+color:white;
+}
+
+.modal-header {
+  color: black;
+}
+
+.modal-content {
+  width: 400px;
+  margin: auto;
+  color: black;
+}
+
+.modal-body {
+  text-align: right;
+}
+
+.header {
+    background-color:#004C00;
+    color:white;
+    border-radius:0;
+    margin-bottom: 0px;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    z-index: 1000;
+}
+
+.header-brand {
+    color:white;
+    font-family: kimberley;
+    letter-spacing: 1.5px;
+    font-size: 32px;
+    padding-left: 20px;
+    float: left;
+}
+
+.header-userOptions {
+    color:white;
+    line-height: 100%;
+    font-family: helvetica;
+    letter-spacing: 1.15px;
+    font-size: 13px;
+    padding-right: 20px;
+    padding-top: 15px;
+    float: right;
+}
+
+.header-userOptions a {
+  color: #CFCFCF;
+  font-weight: bold;
+}
+
+.header a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-login {
+  color: #ffffff;
+  background-color: #003500;
+  border-width: 0px;
+  min-width: 100px;
+  padding: 7px 12px;
+  margin: auto 15px auto 15px;
+}
+.btn-login:hover,
+.btn-login:focus,
+.btn-login:active,
+.btn-login.active,
+.open > .dropdown-toggle.btn-info {
+  color: #ffffff;
+  background-color: #002E00;
+  border-width: 0px;
+}
+
+.btn-adduser {
+  color: #ffffff;
+  background-color: #002600;
+  border-width: 0px;
+  min-width: 100px;
+  padding: 7px 12px;
+}
+.btn-adduser:hover,
+.btn-adduser:focus,
+.btn-adduser:active,
+.btn-adduser.active,
+.open > .dropdown-toggle.btn-info {
+  color: #ffffff;
+  background-color: #001E00;
+  border-width: 0px;
+}
+
+#editPictureButton {
+  background-color: transparent;
+  border-width: 0;
+}
+
+figcaption {
+  font-size: smaller;
+}
+
+.textWrapLeft {
+    float: left;
+    margin: 10px;
+}

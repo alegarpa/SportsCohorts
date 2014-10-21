@@ -1,0 +1,99 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sports Cohorts</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<script type="text/javascript" src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
+		<script type="text/javascript" src = "{% static 'js/bootstrap.js' %}"></script>
+		<script type="text/javascript"src = "{% static 'js/slideshow.js' %}"></script>
+		<script type="text/javascript" src = "{% static 'js/login.js' %}"></script>
+
+		<link rel = "stylesheet" href = "{% static 'css/bootstrap.min.css' %}">
+		<link rel = "stylesheet" href = "{% static 'css/login.css' %}">
+		<link rel = "stylesheet" href = "{% static 'css/slideshow.css' %}">
+	</head>
+
+	<body>
+<div class="header">
+<a href = "#" class = "header-brand">Sports Cohorts</a>
+<!--end header--></div>
+
+
+		<!-- slideshow code-->
+		<ul class="cb-slideshow">
+	        <li><span><img src="{% static 'images/soccer.jpg' %}"></span><div><h3>sports</h3></div></li>
+	        <li><span><img src="{% static 'images/football.jpg' %}"></span><div><h3>more sports</h3></div></li>
+	        <li><span><img src="{% static 'images/basketball.jpg' %}"></span><div><h3>yay sports</h3></div></li>
+	        <li><span><img src="{% static 'images/tennis.jpg' %}"></span><div><h3>sports</h3></div></li>
+	        <li><span><img src="{% static 'images/frisbee.jpeg' %}"></span><div><h3>more sports</h3></div></li>
+	        <li><span><img src="{% static 'images/volleyball.jpg' %}"></span><div><h3>yay sports</h3></div></li>
+	    </ul>
+	    <!-- end slideshow code-->
+
+
+		<!--had to put this outside of other navbar so it wouldn't inherit properties; otherwise modals did not work properly...will fix later-->
+		<div id="headerButtons">
+			<!-- Button triggered login modal -->
+			<button class="btn btn-login btn-sm" data-toggle="modal" data-target="#loginModal">
+			  Login
+			</button>
+			<!-- Modal -->
+			<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Please enter your credentials below</h4>
+			      <!--end modal-header--></div>
+			      <div class="modal-body">
+					<form method="POST" name="loginForm">
+						Username: <input id="username" type="text" name="username"><BR>
+						Password: <input id="password" type="password" name="password"><BR><BR>
+	            		<!--<input id="loginButton" type="submit" value="Login">-->
+	            	</form>
+			      <!--end modal-body--></div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeButton">Close</button>
+			        <button id="loginButton" type="submit" class="btn btn-success">Log in</button>
+			      <!--end modal-footer--></div>
+			    <!--end modal-content--></div>
+			  <!--end modal-dialog--></div>
+			<!--end log in modal--></div>
+
+			<!-- Button triggered add user modal -->
+			<button class="btn btn-adduser btn-sm" data-toggle="modal" data-target="#addUserModal">
+			  Sign Up
+			</button>
+			<!-- Modal -->
+			<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Please fill out all the fields below</h4>
+			     <!--end modal-header--> </div>
+			      <div class="modal-body">
+					<form method="POST" name="loginForm">
+	            		First name: <input id="firstname" type="text" name="firstname"><br>
+	            		Last name: <input id="lastname" type="text" name="lastname"><br>
+	            		E-mail: <input id="email" type="text" name="email"><br>
+	            		Username: <input id="username2" type="text" name="username"><br>
+	            		Password: <input id="password" type="password" name="password"><BR><BR>
+	            		<div id="errorMessage" style="display: none;"></div>
+	            		<!--<input id="createAccountButton" type="submit" value="Create Account">-->
+	            	</form>
+			      <!--end modal-body--></div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeButton2">Close</button>
+			        <button type="submit" id="createAccountButton" class="btn btn-success">Sign me up</button>
+			      <!--end modal-footer--></div>
+			    <!--end modal-content--></div>
+			  <!--end modal-dialog--></div>
+			<!--end add user modal--></div>
+		<!--end headerButtons--></div> 
+	</body>
+</html>
