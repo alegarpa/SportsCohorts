@@ -12,26 +12,38 @@ from django import forms
 
 # GET requests
 def home(request):
-    return render(request, 'users/login.html')
+    return render(request, 'login.html')
 
 # will delete this later--just a sanity check
 def index(request):
     return HttpResponse("Hello, world. You're at the User index.")
-
-"""
-@csrf_exempt      
+   
 def getUserPage(request, username=""):
 	# will want to make it so if username=cookie.username it redirects to user/myprofile
-	userInfo = User.objects.get(id=username)
-	return render(request, 'userprofile.html', {'userInfo': userInfo})
-
-@csrf_exempt      
-def getSelfProfile(request):
-	# need to fill this in
 	#userInfo = User.objects.get(id=username)
 	#return render(request, 'userprofile.html', {'userInfo': userInfo})
+	url = "http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg"
+	name = "Lizzie"
+	lname = "Prader"
+	uname = "lprader"
+	return render(request, 'users/userprofile.html', {"username": uname, "firstName":name, "lastName": lname, "userIcon": url})
 
+def getSelfGames(request, username=""):
+	# will want to make it so if username=cookie.username it redirects to user/myprofile
+	user = User.objects.get(id=username)
+	userGames = user.games
+	return render(request, 'mygames.html', {'gameList': userGames})
+    
+#def getSelfProfile(request):
+	# need to fill this in
+	#userInfo = User.objects.get(id=username)
+	#return render(request, 'myprofile.html', {'userInfo': userInfo})
 
+def viewAllPlayers(request):
+	players = User.objects.all()
+	return render(request, 'users/players.html', {'players': players})
+
+"""
 # POST requests
 @csrf_exempt      
 def register(request):

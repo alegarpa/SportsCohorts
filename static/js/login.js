@@ -49,7 +49,7 @@ $(document).ready(function(){
     $('#loginButton').click(function() {
         username = $('#username').val();
         password = $('#password').val();
-        json_request("/user/login", {user: user, password: password}, update);
+        json_request("/users/login", {user: user, password: password}, update);
         return false;
     });
 
@@ -59,7 +59,7 @@ $(document).ready(function(){
         email = $('#email').val();
         username = $('#username2').val();
         password = $('#password').val();
-        json_request("/user/add", {firstname: firstname, lastname: lastname, email: email, username: username, password: password, email: email}, update);
+        json_request("/users/register", {firstname: firstname, lastname: lastname, email: email, username: username, password: password, email: email}, update);
         return false;
     });
 

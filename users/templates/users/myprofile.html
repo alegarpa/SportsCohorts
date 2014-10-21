@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <img class="textWrapLeft" src={{ userIcon }} width=200px class="img-responsive" alt="user's icon">
+    <!-- add caption with option to change url -->
+    <h3>{{ username }}</h3>
+    {{ firstName }} {{ lastName }}
+    Games:
+    <ul>
+    {% if gameList %}
+        {% for game in gameList %}
+        <li><a href="#">{{ game.name }}</a></li>
+        {% endfor %}
+    {% else %}
+        none
+    {% endif %}
+    </ul>
+{% endblock %}
