@@ -1,16 +1,16 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-
 urlpatterns = [
-    url(r'^$', 'users.views.index', name='index'),
+    url(r'^$', 'users.views.index', name='index'), #remove this later
     url(r'^admin/', include(admin.site.urls)),
     url(r'^all', 'users.views.viewAllPlayers', name='viewAllPlayers'),
-
+    url(r'^notifications', 'users.views.viewMyNotifications', name='viewMyNotifications'),
+    url(r'^newsfeed', 'users.views.viewNewsfeed', name='viewNewsfeed'),
+    url(r'^myfriends', 'users.views.viewMyFriends', name='viewMyFriends'),
     # this takes you to any user's profile
     # right now just testing that template works; will change this to work for all users later
     url(r'^test', 'users.views.getUserPage', name='getUserPage'),
-
     url(r'^myprofile', 'users.views.getSelfProfile', name='getSelfProfile'),
     url(r'^mygames', 'users.views.getSelfGames', name='getSelfGames'),
     #url(r'^users/register', 'users.views.register', name='register'),

@@ -11,10 +11,13 @@ from django.shortcuts import render
 from django import forms
 
 # GET requests
-
 # will delete this later--just a sanity check
 def index(request):
     return HttpResponse("Hello, world. You're at the Sport index.")
+
+def viewAllSports(request):
+	players = User.objects.all() #change this to get user's friends
+	return render(request, '???.html', {'friends': friends})
 """
 
 @csrf_exempt      
