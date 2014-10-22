@@ -72,7 +72,7 @@ class Game(models.Model):
 
 		game_obj = Game.objects.get(name = game)
 
-		if inviter_obj.game_set.filter(game_obj).count() == 0:
+		if inviter_obj.gamePlayers.filter(game_obj).count() == 0:
 			return INVALID_INVITER
 
 		game_obj.players_request.add(invitee)
@@ -87,7 +87,7 @@ class Game(models.Model):
 
 		game_obj = Game.objects.get(name = game)
 
-		if p.game_set.filter(game_obj).count() == 0:
+		if p.gamePlayers.filter(game_obj).count() == 0:
 			return INVALID_PLAYER
 
 		p.delete()
