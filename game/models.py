@@ -14,7 +14,7 @@ class Game(models.Model):
 	players = models.ManyToManyField(User, related_name = 'gamePlayers')
 	location = models.CharField(max_length = MAX_NAME_LENGTH)
 
-	players_request = models.ManyToManyField(User)
+	players_request = models.ManyToManyField(User, related_name = 'gameInvites')
 
 	SUCCESS = 1
 	INVALID_CREATOR = -1
