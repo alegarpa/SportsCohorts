@@ -15,50 +15,87 @@ from django import forms
 # will delete this later--just a sanity check
 def index(request):
     return HttpResponse("Hello, world. You're at the Game index.")
-"""
-    
-@csrf_exempt      
-def getGamePage(request, gameName=''):
-	gameInfo = Game.objects.get(id=gameName)
-	return render(request, 'game.html', {'gameinfo': gameInfo})
 
-
-# POST requests
 @csrf_exempt      
 def create(request):
 	if request.method == 'POST':
 		data = json.loads(request.body.encode(encoding='UTF-8'))
-		return HttpResponse(json.dumps(Game.create(data)), content_type="application/json")
+		name = data["name of game"]
+		host = data["creator of game"]
+		sport = data["sport"]
+		time = data["location"]
+		location = data["time"]
+
+		rval = Game.createGame(name, host, sport, time, location)
+
+		resdata = { "status code" : rval}
+
+		return HttpResponse(json.dumps(resdata), content_type="application/json")
 
 
 @csrf_exempt	
 def addPlayer(request):
 	if request.method == 'POST':
 		data = json.loads(request.body.encode(encoding='UTF-8'))
-		return HttpResponse(json.dumps(Game.addPlayer(data)), content_type="application/json")
+		game = data["game"]
+		newPlayer = data["newPlayer"]
+
+		rval = Game.addPlayer(game, newPlayer)
+
+		resdata = { "status code" : rval}
+
+		return HttpResponse(json.dumps(resdata), content_type="application/json")
 
 @csrf_exempt	
 def removePlayer(request):
 	if request.method == 'POST':
 		data = json.loads(request.body.encode(encoding='UTF-8'))
-		return HttpResponse(json.dumps(Game.removePlayer(data)), content_type="application/json")
+		game = data["game"]
+		player = data["player"]
+
+		rval = Game.removePlayer(game, player)
+
+		resdata = { "status code" : rval}
+
+		return HttpResponse(json.dumps(resdata), content_type="application/json")
 
 @csrf_exempt      
 def invite(request):
 	if request.method == 'POST':
 		data = json.loads(request.body.encode(encoding='UTF-8'))
-		return HttpResponse(json.dumps(Game.invite(data)), content_type="application/json")
+		game = data["game"]
+		inviter = data["inviter"]
+		invitee = data["invitee"]
+
+		rval = Game.invitePlayer(game, inviter, invitee)
+
+		resdata = { "status code" : rval}
+
+		return HttpResponse(json.dumps(resdata), content_type="application/json")
 
 
 @csrf_exempt	
 def timeChange(request):
 	if request.method == 'POST':
 		data = json.loads(request.body.encode(encoding='UTF-8'))
-		return HttpResponse(json.dumps(Game.timeChange(data)), content_type="application/json")
+		game = data["game"]
+		newTime = data["newTime"]
+
+		rval = Game.gameTimeChange(game, newTime)
+
+		resdata = { "status code" : rval}
+
+		return HttpResponse(json.dumps(resdata), content_type="application/json")
 
 @csrf_exempt      
 def locationChange(request):
 	if request.method == 'POST':
 		data = json.loads(request.body.encode(encoding='UTF-8'))
-		return HttpResponse(json.dumps(Game.locationChange(data)), content_type="application/json")
-"""
+		game = data["game"]
+		newLocation = data["newLocation"]
+
+		rval = Game.gameLocationChange(game, newLocation)
+
+		resdata = { "status code" : rval}
+
+		return HttpResponse(json.dumps(resdata), content_type="application/json")
