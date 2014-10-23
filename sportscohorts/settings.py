@@ -37,9 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.auth.hashers',
+    'django_extensions',
     'users',
-    'teams',
-    'games',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,6 +50,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+#Authentication backends
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+    )
 
 ROOT_URLCONF = 'sportscohorts.urls'
 

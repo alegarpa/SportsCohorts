@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from users import views
 
 urlpatterns = patterns('',
     # Examples:
@@ -7,7 +8,10 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^users/login/', users.views.login),
-    url(r'^users/logout/', users.views.logout),
+    url(r'^user/register', views.register),
+    url(r'^user/login', views.login),
+    url(r'^user/logout', views.logout),
+    url(r'^user/requestFriend', views.requestFriend),
+    url(r'^TESTAPI/reset', views.reset),
     
 )
